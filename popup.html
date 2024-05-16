@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Welcome to color picker</h2>
+        <button id="eyeDropperIcon">Pick Color</button>
+        <div class="colorBox">
+            <span class="colorGrid"></span>
+            <span class="colorValue"></span>
+        </div>
+    </div>
+    <script src="background.js"></script>
+    <script>
+        function removeColor(value){
+            const new_colorList = JSON.parse(localStorage.getItem("colorList"));
+            const myList = new_colorList.filter((color)=>color!==value);
+            myList.map((color) => {
+                const { r, g, b } = hex2rgb(color);
+                const div = document.createElement('div');
+                div.classList.add("mainDiv");
+                div.innerHTML = `<span id="colorGrid" style="background-color:${color}"></span>
+                    <span id="colorValue" value="${color}">${color}</span><span>rgb(${r}, ${g}, ${b})</span><button class="removeBtn">Remove</button>`;
+                colorBox.appendChild(div);
+            })
+            localStorage.setItem("colorList", JSON.stringify(myList));
+        }
+    </script>
+</body>
+</html>

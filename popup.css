@@ -1,0 +1,47 @@
+body{
+    background: rgb(211, 209, 209);
+}
+.main{
+    width: 300px;
+    text-align: center;
+}
+
+#eyeDropperIcon{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 7px;
+    width: 200px;
+    font-weight: 400;
+}
+#eyeDropperIcon:hover{
+    background-color: gray;
+}
+.colorBox{
+    margin-top: 5%;
+}
+
+#colorGrid{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+}
+
+.mainDiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2%;
+    margin-top: 3%;
+}
+
+.removeBtn{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-weight: 400;
+}
