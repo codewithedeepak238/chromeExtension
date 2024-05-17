@@ -1,19 +1,29 @@
+/* #93c1e6 */
+
 body{
-    background: rgb(211, 209, 209);
+    background: #d0e8ff;
+    margin: 0;
 }
 .main{
-    width: 300px;
-    text-align: center;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
 }
-
+.content{
+    padding: 3% 2%;
+}
 #eyeDropperIcon{
     cursor: pointer;
     outline: none;
     border: none;
-    padding: 5px 10px;
-    border-radius: 7px;
-    width: 200px;
-    font-weight: 400;
+    padding: 10px 10px;
+    border-radius: 3px;
+    width: 100%;
+    font-weight: 600;
+    background: #39acff;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0px 3px 5px lightblue;;
 }
 #eyeDropperIcon:hover{
     background-color: gray;
@@ -24,9 +34,18 @@ body{
 
 #colorGrid{
     display: inline-block;
-    width: 20px;
+    width: 80px;
     height: 20px;
     border: 1px solid black;
+}
+
+.color-box{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgb(85, 34, 158);
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .mainDiv{
@@ -44,4 +63,61 @@ body{
     padding: 5px 10px;
     border-radius: 7px;
     font-weight: 400;
+}
+.hex{
+    color: #39acff;
+    font-weight: 700;
+}
+
+.hexBox{
+    width: 100%;
+    height: 25px;
+    background: #93c1e6;
+    border-radius: 3px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    cursor: pointer;
+}
+.css{
+    color: #39acff;
+    font-weight: 700;
+}
+
+.cssBox{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    background: #93c1e6;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    cursor: pointer;
+}
+.recent{
+    font-weight: 700;
+    color: purple;
+    margin-bottom: 5%;
+}
+.recent-box{
+    display: flex;
+    justify-content: space-between;
+}
+#clear{
+    color: #39acff;
+    cursor: pointer;
+}
+
+.header{
+    background-color: white;
+    padding: 0 2%;
+}
+#recent-color{
+    display: flex;
+    align-items: center;
+    gap: 3px;
 }
