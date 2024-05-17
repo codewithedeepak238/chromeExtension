@@ -1,6 +1,13 @@
 let icon = document.getElementById("eyeDropperIcon")
 
-const colorBox = document.querySelector(".colorBox");
+const hexBox = document.querySelector(".hexBox");
+const cssBox = document.querySelector(".cssBox");
+const recent = document.querySelector(".recent");
+const colorBox = document.getElementById("colorGrid");
+const recentColor = document.getElementById("recent-color");
+const colorGrid = document.getElementById("colorGrid");
+const clear = document.getElementById("clear");
+
 let colorList = [];
 
 //create full hex
@@ -32,15 +39,15 @@ const hex2rgb = (hex) => {
 }
 
 if (localStorage.getItem("colorList")) {
-    colorList = [...JSON.parse(localStorage.getItem("colorList"))]
     const new_colorList = JSON.parse(localStorage.getItem("colorList"));
     new_colorList.map((color) => {
-        const { r, g, b } = hex2rgb(color);
-        const div = document.createElement('div');
-        div.classList.add("mainDiv");
-        div.innerHTML = `<span id="colorGrid" style="background-color:${color}"></span>
-            <span id="colorValue">${color}</span><span>rgb(${r}, ${g}, ${b})</span>`;
-        colorBox.appendChild(div);
+        const div = document.createElement("div");
+        div.style.background = color;
+        div.style.width = "20px";
+        div.style.height = "20px";
+        div.style.cursor = "pointer";
+        recentColor.appendChild(div);
+        colorGrid.style.background = color;
     })
 }
 
@@ -53,20 +60,43 @@ async function pickColor() {
         if (selection !== null) {
             const color = selection.sRGBHex;
             const { r, g, b } = hex2rgb(color);
-            const div = document.createElement('div');
-            div.classList.add("mainDiv");
-            div.innerHTML = `<span id="colorGrid" style="background-color:${color}"></span>
-            <span id="colorValue" value="${color}">${color}</span><span>rgb(${r}, ${g}, ${b})</span>`;
-            colorBox.appendChild(div);
+            hexBox.innerText = color;
+            cssBox.innerText = `rgb(${r}, ${g}, ${b})`;
+            colorGrid.style.background = color;
             colorList.push(color);
             localStorage.setItem("colorList", JSON.stringify(colorList));
-            try {
-                await navigator.clipboard.writeText(color);
-            } catch (err) {
-                console.error(err);
-            }
+            const div = document.createElement("div");
+            div.style.cursor = "pointer";
+            div.style.background = color;
+            div.style.width = "20px";
+            div.style.height = "20px";
+            recentColor.appendChild(div);
+            colorGrid.style.background = color;
         }
     } catch (err) {
         console.log(err)
     }
 }
+
+clear.addEventListener("click", clearColor)
+
+async function clearColor() {
+    localStorage.removeItem("colorList");
+    recentColor.innerHTML = "";
+}
+
+hexBox.addEventListener("click", async ()=>{
+    try {
+        await navigator.clipboard.writeText(hexBox.innerText);
+    } catch (err) {
+        console.error(err);
+    }
+})
+
+cssBox.addEventListener("click", async ()=>{
+    try {
+        await navigator.clipboard.writeText(cssBox.innerText);
+    } catch (err) {
+        console.error(err);
+    }
+})
