@@ -11,11 +11,24 @@
 
 <body>
     <div class="main">
-        <h2>Welcome to color picker</h2>
-        <button id="eyeDropperIcon">Pick Color</button>
-        <div class="colorBox">
-            <span class="colorGrid"></span>
-            <span class="colorValue"></span>
+        <div class="header">
+            <h2>Welcome to Color Picker</h2>
+        </div>
+        <div class="content">
+            <p class="color-box">Selected Color <span id="colorGrid"></span></p>
+            <div class="hex">
+                <p>HEX</p>
+                <p class="hexBox"></p>
+            </div>
+            <div class="css">
+                <p>CSS</p>
+                <p class="cssBox"></p>
+            </div>
+            <div class="recent">
+                <p class="recent-box">Recent Colors <span id="clear">Clear</span></p>
+                <div id="recent-color"></div>
+            </div>
+            <button id="eyeDropperIcon">Pick Color</button>
         </div>
     </div>
     <script src="background.js"></script>
